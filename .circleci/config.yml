@@ -7,7 +7,7 @@ workflows:
             tags:
               only: /.*/
       - test-python-install:
-          version: "3.8"
+          version: "3.8.2"
           requires:
             - build
       - deploy:
