@@ -1,2 +1,2 @@
 # pypi-sample-lib
-python sample lib for test POC build python library
+python sample lib for test and POC build python library

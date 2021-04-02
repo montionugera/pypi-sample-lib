@@ -1,0 +1,5 @@
+[run]
+include = kitten_box/*
+omit =
+    **/__*__.py
+    **/_version.py
