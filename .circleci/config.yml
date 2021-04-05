@@ -53,13 +53,11 @@ jobs:
       - restore_cache:
           key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
-          name: install python dependencies
-          command: |
-            make dev
-      - save_cache:
-          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
-          paths:
-            - "venv"
+        name: activate venv
+        command: |
+         python3 -m venv venv
+         . venv/bin/activate
+
       - run:
           name: run tests
           command: |
@@ -70,14 +68,7 @@ jobs:
           name: Smoke Test Install
           command: |
             python --version
-            # Change me
             sudo pip3 install kitten-box
-  integration:
-    docker:
-      - image: cimg/python:3.8
-    steps:
-      - run: echo "It works!"
-      - run: echo $RUN_EXTRA_TESTS
   deploy:
     docker:
       - image:  cimg/python:3.8
@@ -86,18 +77,13 @@ jobs:
       - restore_cache:
           key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
-          name: install python dependencies
+          name: activate venv
           command: |
-            make dev
-      - save_cache:
-          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
-          paths:
-            - "venv"
+           python3 -m venv venv
+           . venv/bin/activate
       - run:
           name: verify git tag vs. version
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
             python setup.py verify
       - run:
           name: init .pypirc
