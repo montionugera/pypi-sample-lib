@@ -59,6 +59,7 @@ jobs:
             pip install -e .
             python --version
             pip install kitten-box
+            python -c "from kitten_box import *"
   deploy:
     docker:
       - image:  cimg/python:3.8
