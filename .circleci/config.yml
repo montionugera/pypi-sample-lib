@@ -27,11 +27,7 @@ jobs:
       - run:
           name: install python dependencies
           command: |
-            make dev
-      - save_cache:
-          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
-          paths:
-            - "venv"
+            pip install -r dependencies/requirement-dev.txt
       - run:
           name: run tests
           command: |
@@ -47,12 +43,10 @@ jobs:
       - image: circleci/python:<< parameters.version >>
     steps:
       - checkout
-      - restore_cache:
-          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
-          name: activate venv
+          name: install python dependencies
           command: |
-             . venv/bin/activate
+           pip install -r dependencies/requirement-dev.txt
       - run:
           name: run tests
           command: |
@@ -72,9 +66,9 @@ jobs:
       - restore_cache:
           key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
-          name: activate venv
+          name: install python dependencies
           command: |
-             . venv/bin/activate
+           pip install -r dependencies/requirement-dev.txt
       - run:
           name: verify git tag vs. version
           command: |
@@ -88,9 +82,9 @@ jobs:
       - run:
           name: create packages
           command: |
-            make package
+            python setup.py sdist
+            python setup.py bdist_wheel
       - run:
           name: upload to pypi
           command: |
-            . venv/bin/activate
             twine upload dist/*
