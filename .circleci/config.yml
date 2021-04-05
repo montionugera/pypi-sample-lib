@@ -58,7 +58,7 @@ jobs:
           command: |
             pip install -e .
             python --version
-            sudo pip3 install kitten-box
+            pip install kitten-box
   deploy:
     docker:
       - image:  cimg/python:3.8
