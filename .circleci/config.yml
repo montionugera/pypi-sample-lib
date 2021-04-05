@@ -24,8 +24,6 @@ jobs:
       - image: cimg/python:3.8
     steps:
       - checkout
-      - restore_cache:
-          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
           name: install python dependencies
           command: |
