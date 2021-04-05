@@ -7,7 +7,7 @@ workflows:
             tags:
               only: /.*/
       - test-python-install:
-          version: "3.8.2"
+          version: "3.8"
           requires:
             - build
       - deploy:
@@ -25,13 +25,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
           name: install python dependencies
           command: |
             make dev
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
           paths:
             - "venv"
       - run:
@@ -51,13 +51,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
           name: install python dependencies
           command: |
             make dev
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
           paths:
             - "venv"
       - run:
@@ -84,13 +84,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
           name: install python dependencies
           command: |
             make dev
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
+          key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
           paths:
             - "venv"
       - run:
