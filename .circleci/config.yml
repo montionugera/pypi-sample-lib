@@ -53,10 +53,10 @@ jobs:
       - restore_cache:
           key: v1-1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
       - run:
-        name: activate venv
-        command: |
-         python3 -m venv venv
-         . venv/bin/activate
+          name: activate venv
+          command: |
+             python3 -m venv venv
+             . venv/bin/activate
 
       - run:
           name: run tests
@@ -79,8 +79,8 @@ jobs:
       - run:
           name: activate venv
           command: |
-           python3 -m venv venv
-           . venv/bin/activate
+             python3 -m venv venv
+             . venv/bin/activate
       - run:
           name: verify git tag vs. version
           command: |
