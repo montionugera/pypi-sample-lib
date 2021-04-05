@@ -5,7 +5,7 @@ circleci.version
     .. versionadded:: 1.2.0
 """
 VERSION = "0.1.1"
-"""Current version of circleci.py."""
+"""Current version"""
 
 def get_short_version():
     """

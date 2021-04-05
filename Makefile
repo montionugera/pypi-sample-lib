@@ -14,7 +14,6 @@ dev:
 	python3 -m venv build_venv
 	. build_venv/bin/activate
 	pip install -r dependencies/requirement-dev.txt
-	pip install versioneer
 	pip install -e .
 
 docs:
