@@ -55,10 +55,7 @@ jobs:
       - run:
           name: install python dependencies
           command: |
-            python3 -m venv build_venv
-            . build_venv/bin/activate
-            pip install -r dependencies/requirement-dev.txt
-            pip install -e .
+            make dev
       - save_cache:
           key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
           paths:
@@ -73,7 +70,8 @@ jobs:
           name: Smoke Test Install
           command: |
             python --version
-            sudo pip3 install circleci
+            # Change me
+            sudo pip3 install kitten-box
   integration:
     docker:
       - image: cimg/python:3.8
@@ -94,7 +92,7 @@ jobs:
       - save_cache:
           key: v1-dependency-cache-{{ checksum "setup.py" }}-{{ checksum "Makefile" }}
           paths:
-            - "venv"
+            - "build_venv"
       - run:
           name: verify git tag vs. version
           command: |
