@@ -35,7 +35,6 @@ jobs:
       - run:
           name: run tests
           command: |
-            make test
             pytest --cov --cov-report=html
       - store_artifacts:
           path: htmlcov/
@@ -54,7 +53,6 @@ jobs:
           name: activate venv
           command: |
              . venv/bin/activate
-
       - run:
           name: run tests
           command: |
@@ -76,7 +74,6 @@ jobs:
       - run:
           name: activate venv
           command: |
-             python3 -m venv venv
              . venv/bin/activate
       - run:
           name: verify git tag vs. version
