@@ -35,7 +35,7 @@ setup(
     version=VERSION,
     description="Simple Py package",
     long_description=readme(),
-    url="https://github.com/levlaz/circleci.py",
+    url="https://github.com/montionugera/pypi-sample-lib",
     author="mont Pasit Nusso",
     author_email="montionugera@gmail.com",
     license="MIT",
