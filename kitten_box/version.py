@@ -4,7 +4,7 @@ circleci.version
     This module provides some helper functions to set version in various places.
     .. versionadded:: 1.2.0
 """
-VERSION = "0.1.3"
+VERSION = "0.1.5"
 """Current version"""
 
 def get_short_version():
