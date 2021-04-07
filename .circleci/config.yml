@@ -63,6 +63,8 @@ jobs:
   deploy:
     docker:
       - image:  cimg/python:3.8
+    context:
+      - secret
     steps:
       - checkout
       - restore_cache:
